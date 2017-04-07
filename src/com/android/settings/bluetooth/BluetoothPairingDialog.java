@@ -292,8 +292,8 @@ public final class BluetoothPairingDialog extends AlertActivity implements
         } else if (mDevice.getPhonebookAccessPermission() == BluetoothDevice.ACCESS_REJECTED){
             contactSharing.setChecked(false);
         } else {
-            if (mDevice.getBluetoothClass().getDeviceClass()
-                    == BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE) {
+            if ((mDevice.getBluetoothClass() != null) && (mDevice.getBluetoothClass().getDeviceClass()
+                    == BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE)) {
                 contactSharing.setChecked(false);
                 mDevice.setPhonebookAccessPermission(BluetoothDevice.ACCESS_REJECTED);
                 EventLog.writeEvent(0x534e4554, "73173182", -1, "");
